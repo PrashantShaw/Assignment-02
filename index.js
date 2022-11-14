@@ -1,10 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const { HOST, PORT, DB } = require('./config/DB_config')
+const app = require('./app')
 
-const app = express()
 
-mongoose.connect(`mongodb://${HOST}:${PORT}/${DB}`, ()=>{
+
+mongoose.connect(`mongodb://${HOST}:${PORT}/${DB}`, () => {
     console.log('connected to DB')
 })
 
@@ -12,10 +13,4 @@ mongoose.connect(`mongodb://${HOST}:${PORT}/${DB}`, ()=>{
 
 
 
-
-
-app.get('/',(req,res)=>{
-    res.send("All Ok.")
-})
-
-app.listen(3000, ()=>{console.log('server is running')})
+app.listen(3000, () => { console.log('server is running') })
